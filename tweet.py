@@ -2,7 +2,6 @@ import tweepy
 import os
 import math
 import datetime
-import re
 
 class TimeLimitExceedError(Exception):
     def __init__(self, message):
@@ -31,6 +30,7 @@ def Miller_Rabin_test(n, a):
 
 #ミラーラビン素数判定法を用いた素数判定
 def is_prime(n):
+    if n < 2: return False
     result = True
     start_time = datetime.datetime.now()
     for a in range(2, min(n, 2 * int(math.log(n) ** 2) + 1)):
